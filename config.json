@@ -11,7 +11,8 @@
                 "/Users/anatoly/Downloads/DSL Dictionaries/En-En-Oald8.08-2010.dsl",
                 "/Users/anatoly/Downloads/DSL Dictionaries/LingvoUniversalEnRu",
                 "/Users/anatoly/Downloads/DSL Dictionaries/en-en_CALD4/en-en_CALD4/en-en_CALD4"
-            ]
+            ],
+            "wordToTranslatePath": "words.txt"
         }
     }
 

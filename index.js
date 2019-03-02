@@ -2,7 +2,7 @@ const api = require("./anki/ank-connect-api");
 const ankiHelper = require("./anki/anki-helper");
 const config = require("./config");
 const dslHelper =require("./dsl/dsl-helper");
-
+const fs = require("fs");
 
 function NoteData (front, back) {
     this.front = front;
@@ -10,12 +10,23 @@ function NoteData (front, back) {
     this.canBeAdded = true;
 }
 
-(async () => {
+function getWordsToTranslate() {
+    const words = fs.readFileSync(config.sources.dsl.wordToTranslatePath).toString().split("\n").map(word => {
+        word = word.replace(/[^a-zA-Z\d\s:]/gm, '');
+        return word;
+    }).filter(word => {
+        return word.length > 0;
+    });
+    return words;
+}
+
+
+async function translateAndAddWordsToAnki(words) {
     try {
         let notesData = [];
-        var words = ["angel", "world", "test"];
         const htmlTranslations = dslHelper.getHtmlTranslations(words);
         //create notesData from html translations
+        console.log("done");
         Object.keys(htmlTranslations).forEach(key => {
             const value = htmlTranslations[key];
             const noteData = new NoteData(key, value);
@@ -29,5 +40,13 @@ function NoteData (front, back) {
     } catch (e) {
         console.error(e);
     }
-})();
+}
+
+const words = getWordsToTranslate();
+translateAndAddWordsToAnki(words).then(response => {
+    console.log(response);
+}, error => {
+    console.error(error);
+})
+
 

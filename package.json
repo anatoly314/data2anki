@@ -1,0 +1,15 @@
+{
+  "name": "data2anki",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "java": "^0.11.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

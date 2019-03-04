@@ -42,8 +42,29 @@ async function translateAndAddWordsToAnki(words) {
     }
 }
 
-const words = getWordsToTranslate();
-translateAndAddWordsToAnki(words).then(response => {
+function splitArrayToChunks(words) {
+    let chunkSize = config.maxNotesPerCall;
+    let chunks = [];
+    for (let i = 0; i < words.length; i += chunkSize) {
+        let tempArray = words.slice(i, i + chunkSize);
+        chunks.push(tempArray);
+    }
+    return chunks;
+}
+
+
+
+async function main(){
+    const words = getWordsToTranslate();
+    const chunkedWords = splitArrayToChunks(words);
+    for(let chunk of chunkedWords){
+        console.log(chunk.length);
+        let response = await translateAndAddWordsToAnki(chunk);
+        console.log(response);
+    }
+}
+
+main().then(response => {
     console.log(response);
 }, error => {
     console.error(error);

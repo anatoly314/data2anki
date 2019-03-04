@@ -3,6 +3,7 @@
     "apiVersion": 6,
     "deckName": "English",
     "modelName": "English DSL",
+    "maxNotesPerCall": 10,
     "sources": {
         "dsl": {
             "dictionariesPath":[

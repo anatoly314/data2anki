@@ -1,19 +1,28 @@
 {
     "uri": "http://localhost:8765",
     "apiVersion": 6,
-    "deckName": "English",
-    "modelName": "English DSL",
     "maxNotesPerCall": 10,
-    "sources": {
+    "modules": {
         "dsl": {
+            "anki": {
+                "deckName": "English",
+                "modelName": "English DSL"
+            },
             "dictionariesPath":[
                 "/Users/anatoly/Downloads/DSL Dictionaries/CollinsCobuildEnEn",
                 "/Users/anatoly/Downloads/DSL Dictionaries/CollinsEnEn",
                 "/Users/anatoly/Downloads/DSL Dictionaries/En-En-Oald8.08-2010.dsl",
-                "/Users/anatoly/Downloads/DSL Dictionaries/LingvoUniversalEnRu",
-                "/Users/anatoly/Downloads/DSL Dictionaries/en-en_CALD4/en-en_CALD4/en-en_CALD4"
+                "/Users/anatoly/Downloads/DSL Dictionaries/en-en_CALD4/en-en_CALD4/en-en_CALD4",
+                "/Users/anatoly/Downloads/DSL Dictionaries/LingvoUniversalEnRu"
             ],
             "wordToTranslatePath": "words.txt"
+        },
+        "markdown": {
+            "anki": {
+                "deckName": "Angular",
+                "modelName": "Angular"
+            },
+            "pathToFile": "/Users/anatoly/Developer/projects assets/markdown-files/angular.md"
         }
     }
 

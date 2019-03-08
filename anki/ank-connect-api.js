@@ -99,7 +99,7 @@ api.canAddNotes = async function (deckName, modelName, frontFields = []) {
     return data;
 }
 
-api.addNotes = async function (deckName, modelName, notesData) {
+api.addNotes = async function (notesData, deckName, modelName) {
     const body = {
         action: "addNotes",
         version: config.apiVersion,

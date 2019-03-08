@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "java": "^0.11.0"
+    "java": "^0.11.0",
+    "highlight.js": "^9.15.6",
+    "markdown-it": "^8.4.2"
   },
   "author": "",
   "license": "ISC"

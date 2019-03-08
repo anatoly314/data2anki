@@ -7,7 +7,7 @@ const dslHelper = {};
 module.exports = dslHelper;
 
 dslHelper.getHtmlTranslations = function (words) {
-    var pathArray = java.newArray('java.lang.String', config.sources.dsl.dictionariesPath);
+    var pathArray = java.newArray('java.lang.String', config.modules.dsl.dictionariesPath);
     var wordsArray = java.newArray('java.lang.String', words);
 
     var htmlArticles = java.callStaticMethodSync("entrypoints.Dsl2Html", "getTranslationsAsArray", pathArray, wordsArray);

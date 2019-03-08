@@ -19,10 +19,13 @@
         },
         "markdown": {
             "anki": {
-                "deckName": "Angular",
-                "modelName": "Angular"
+                "deckName": "JavaScript 123 Questions",
+                "modelName": "JavaScript"
             },
-            "pathToFile": "/Users/anatoly/Developer/projects assets/markdown-files/angular.md"
+            "selectors": {
+              "question":["## Question "]
+            },
+            "pathToFile": "/Users/anatoly/Developer/projects assets/markdown-files/javascript.md"
         }
     }
 

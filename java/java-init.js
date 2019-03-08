@@ -8,9 +8,6 @@ dependencies.forEach(function(dependency){
     java.classpath.push(jarsLocation + "/" + dependency);
 })
 
-java.classpath.push("./target/classes");
-java.classpath.push("./target/test-classes");
-
 exports.getJavaInstance = function() {
     return java;
 }

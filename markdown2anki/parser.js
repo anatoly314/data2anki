@@ -1,5 +1,6 @@
 const fs = require("fs");
 const NoteData = require("../anki/note-data");
+const config = require("../config");
 const readline = require("readline");
 const hljs = require('highlight.js'); // https://highlightjs.org/
 const md = require('markdown-it')({
@@ -33,6 +34,16 @@ function _rawNoteToAnkiNote(rawNote, notes) {
 }
 
 function _getRawNotesFromMarkdownFile(filename) {
+    function checkIfQuestionLine(line) {
+        let newLine = false;
+        config.modules.markdown.selectors.question.forEach(selector => {
+            if(line.startsWith(selector)){
+                newLine = true;
+            }
+        });
+        return newLine;
+    }
+
     return new Promise((resolve, reject) => {
         try {
             let note;
@@ -46,7 +57,7 @@ function _getRawNotesFromMarkdownFile(filename) {
             });
 
             rl.on('line', (line) => {
-                if(line[0] === "#"){ //add previous card if exists and create a new one
+                if(checkIfQuestionLine(line)){ //add previous card if exists and create a new one
                     if(note){
                         notes = _rawNoteToAnkiNote(note, notes);
                     }

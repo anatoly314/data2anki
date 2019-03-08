@@ -1,6 +1,6 @@
 const ankiHelper = require("../anki/anki-helper");
 const config = require("../config");
-const dslHelper =require("../dsl2anki/dsl-helper");
+const dslHelper = require("../dsl2anki/dsl-helper");
 const fs = require("fs");
 const arrayHelper = require("../helpers/array-helper");
 const NoteData = require("../anki/note-data");

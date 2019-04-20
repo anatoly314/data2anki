@@ -34,14 +34,24 @@ function _rawNoteToAnkiNote(rawNote, notes) {
 }
 
 function _getRawNotesFromMarkdownFile(filename) {
-    function checkIfQuestionLine(line) {
-        let newLine = false;
-        config.modules.markdown.selectors.question.forEach(selector => {
+    function checkIfQuestionStarts(line) {
+        let questionStarts = false;
+        config.modules.markdown.selectors.startQuestionSelectors.forEach(selector => {
             if(line.startsWith(selector)){
-                newLine = true;
+                questionStarts = true;
             }
         });
-        return newLine;
+        return questionStarts;
+    }
+
+    function checkIfAnswerStarts(line) {
+        let answerStarts = false;
+        config.modules.markdown.selectors.startAnswerSelectors.forEach(selector => {
+            if(line.startsWith(selector)){
+                answerStarts = true;
+            }
+        });
+        return answerStarts;
     }
 
     return new Promise((resolve, reject) => {
@@ -56,18 +66,42 @@ function _getRawNotesFromMarkdownFile(filename) {
                 crlfDelay: Infinity
             });
 
-            rl.on('line', (line) => {
-                if(checkIfQuestionLine(line)){ //add previous card if exists and create a new one
-                    if(note){
-                        notes = _rawNoteToAnkiNote(note, notes);
+            if(config.modules.markdown.questionMode === 'SINGLE_LINE_QUESTION'){
+                rl.on('line', (line) => {
+                    if(checkIfQuestionStarts(line)){ //add previous card if exists and create a new one
+                        if(note){
+                            notes = _rawNoteToAnkiNote(note, notes);
+                        }
+                        note = new RawNote();
+                        note.frontRaw = line;
+                    }else{
+                        note.backRaw += line;
+                        note.backRaw += "\n";
                     }
-                    note = new RawNote();
-                    note.frontRaw = line;
-                }else{
-                    note.backRaw += line;
-                    note.backRaw += "\n";
-                }
-            });
+                });
+            }else if(config.modules.markdown.questionMode === 'MULTI_LINE_QUESTION'){
+                let parsingQuestion = false;
+                rl.on('line', (line) => {
+                    console.log(line);
+                    if(checkIfQuestionStarts(line)){ //add previous card if exists and create a new one
+                        parsingQuestion = true;
+                        if(note){
+                            notes = _rawNoteToAnkiNote(note, notes);
+                        }
+                        note = new RawNote();
+                        note.frontRaw = line;
+                    }else if(checkIfAnswerStarts(line) || !parsingQuestion){
+                        parsingQuestion = false;
+                        note.backRaw += line;
+                        note.backRaw += "\n";
+                    }else if(parsingQuestion){
+                        note.frontRaw += line;
+                        note.frontRaw += "\n";
+                    }
+                });
+            }
+
+
 
             rl.on('close', () => {
                 notes = _rawNoteToAnkiNote(note, notes);

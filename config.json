@@ -19,13 +19,15 @@
         },
         "markdown": {
             "anki": {
-                "deckName": "JavaScript 123 Questions",
+                "deckName": "JavaScript Test",
                 "modelName": "JavaScript"
             },
+            "questionMode": "MULTI_LINE_QUESTION" ,
             "selectors": {
-              "question":["## Question "]
+                "startQuestionSelectors": ["## Question "],
+                "startAnswerSelectors": ["### Answer"]
             },
-            "pathToFile": "/Users/anatoly/Developer/projects assets/markdown-files/javascript.md"
+            "pathToFile": "/Users/anatoly/Developer/projects assets/markdown-files/javascript-multiline.md"
         }
     }
 

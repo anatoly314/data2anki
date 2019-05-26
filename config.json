@@ -2,7 +2,7 @@
     "uri": "http://localhost:8765",
     "apiVersion": 6,
     "maxNotesPerCall": 10,
-    "mode": "dsl2anki",
+    "mode": "markdown2anki",
     "modules": {
         "dsl": {
             "anki": {
@@ -23,7 +23,6 @@
                 "deckName": "JavaScript Test",
                 "modelName": "JavaScript"
             },
-            "questionMode": "MULTI_LINE_QUESTION" ,
             "selectors": {
                 "startQuestionSelectors": ["#QUESTION#"],
                 "startAnswerSelectors": ["#ANSWER#"]

@@ -2,6 +2,7 @@
     "uri": "http://localhost:8765",
     "apiVersion": 6,
     "maxNotesPerCall": 10,
+    "mode": "dsl2anki",
     "modules": {
         "dsl": {
             "anki": {
@@ -15,7 +16,7 @@
                 "/Users/anatoly/Downloads/DSL Dictionaries/en-en_CALD4/en-en_CALD4/en-en_CALD4",
                 "/Users/anatoly/Downloads/DSL Dictionaries/LingvoUniversalEnRu"
             ],
-            "wordToTranslatePath": "words.txt"
+            "wordToTranslatePath": "/Users/anatoly/Desktop/words.txt"
         },
         "markdown": {
             "anki": {
@@ -24,8 +25,8 @@
             },
             "questionMode": "MULTI_LINE_QUESTION" ,
             "selectors": {
-                "startQuestionSelectors": ["## Question "],
-                "startAnswerSelectors": ["### Answer"]
+                "startQuestionSelectors": ["#QUESTION#"],
+                "startAnswerSelectors": ["#ANSWER#"]
             },
             "pathToFile": "/Users/anatoly/Developer/projects assets/markdown-files/javascript-multiline.md"
         }

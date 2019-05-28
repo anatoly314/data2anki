@@ -10,11 +10,8 @@
                 "modelName": "English DSL"
             },
             "dictionariesPath":[
-                "/Users/anatoly/Downloads/DSL Dictionaries/CollinsCobuildEnEn",
-                "/Users/anatoly/Downloads/DSL Dictionaries/CollinsEnEn",
-                "/Users/anatoly/Downloads/DSL Dictionaries/En-En-Oald8.08-2010.dsl",
-                "/Users/anatoly/Downloads/DSL Dictionaries/en-en_CALD4/en-en_CALD4/en-en_CALD4",
-                "/Users/anatoly/Downloads/DSL Dictionaries/LingvoUniversalEnRu"
+                "/Users/anatoly/Downloads/DSL Dictionaries/Dictionary1EnEn",
+                "/Users/anatoly/Downloads/DSL Dictionaries/Dictionary2EnEn"
             ],
             "wordToTranslatePath": "/Users/anatoly/Desktop/words.txt"
         },
@@ -27,7 +24,7 @@
                 "startQuestionSelectors": ["#QUESTION#"],
                 "startAnswerSelectors": ["#ANSWER#"]
             },
-            "pathToFile": "/Users/anatoly/Developer/projects assets/markdown-files/javascript-multiline.md"
+            "pathToFile": "/Users/anatoly/Developer/projects assets/markdown-files/javascript-test.md"
         }
     }
 
